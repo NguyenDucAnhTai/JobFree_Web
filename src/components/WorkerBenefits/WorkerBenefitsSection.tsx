@@ -45,6 +45,7 @@ export default function WorkerBenefitsSection() {
     <section
       ref={ref}
       id="worker"
+      data-header-theme="light"
       className="relative w-full overflow-hidden bg-ink px-page-x py-section-y text-white"
     >
       <Background />

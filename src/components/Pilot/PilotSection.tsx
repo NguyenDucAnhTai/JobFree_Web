@@ -93,10 +93,6 @@ export default function PilotSection() {
         animate={inView ? "visible" : "hidden"}
       >
         <motion.div variants={fadeUp} custom={0}>
-          <p className="mb-4 inline-flex rounded-pill border border-ink/15 bg-white/40 px-4 py-2 text-body-xs font-black uppercase tracking-[0.16em] text-ink-muted">
-            Pilot program
-          </p>
-
           <h2 className="max-w-[12ch] font-display text-title-section font-black text-ink">
             Đăng ký tham gia bản thử nghiệm
           </h2>

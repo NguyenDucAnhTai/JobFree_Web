@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import logo from "../assets/logo.png";
+import logoDark from "../assets/logo_dark.svg";
+import logoLight from "../assets/logo_light.svg";
+import { Link } from "react-router-dom";
 
 const navLinks = [
   { label: "Giải pháp", href: "#solutions", hasDropdown: true },
   { label: "Cách hoạt động", href: "#how-it-works", hasDropdown: true },
   { label: "Bảng giá", href: "#pricing", hasDropdown: false },
   { label: "Đối tượng", href: "#audience", hasDropdown: false },
+  { label: "Về JobFree", to: "/about", hasDropdown: false },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [headerTheme, setHeaderTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,42 +23,49 @@ export default function Header() {
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  const isDark = headerTheme === "dark";
   return (
     <motion.header
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? "border-b border-ink/10 bg-surface-cream-strong/72 shadow-[0_18px_50px_rgba(16,16,16,0.10)] backdrop-blur-2xl"
-          : "border-b border-transparent bg-white/10 backdrop-blur-[6px]"
+          ? isDark
+            ? "border-b border-white/8 bg-black/35 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-2xl"
+            : "border-b border-black/10 bg-white/65 shadow-[0_18px_50px_rgba(16,16,16,0.10)] backdrop-blur-2xl"
+          : isDark
+            ? "border-b border-white/6 bg-black/15 backdrop-blur-md"
+            : "border-b border-transparent bg-white/10 backdrop-blur-md"
       }`}
-      initial={{ opacity: 0, y: -14 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="grid h-nav-h w-full grid-cols-[1fr_auto] items-center gap-4 px-page-x lg:grid-cols-[minmax(180px,1fr)_auto_minmax(180px,1fr)]">
-        <a
-          href="#top"
+        <Link
+          to="/"
           className="inline-flex w-fit items-center transition-transform duration-200 hover:-translate-y-0.5"
           aria-label="JobFree homepage"
         >
           <img
-            src={logo}
+            src={headerTheme === "dark" ? logoLight : logoDark}
             alt="JobFree"
-            className="h-10 w-auto object-contain sm:h-11 lg:h-12 xl:h-[62px]"
-            draggable={false}
+            className="h-8 w-auto object-contain transition-all duration-300 sm:h-9 lg:h-10"
           />
-        </a>
+        </Link>
 
         <nav className="hidden items-center justify-center gap-8 lg:flex xl:gap-10">
           {navLinks.map((item) => (
-            <a
+            <Link
               key={item.label}
-              href={item.href}
-              className="group inline-flex items-center gap-1.5 text-nav-link font-extrabold text-ink-soft transition-colors duration-200 hover:text-ink"
+              to={item.to}
+              className={`group inline-flex items-center gap-2 text-nav-link font-black transition-colors duration-200 ${
+                headerTheme === "dark"
+                  ? "text-white/72 hover:text-white"
+                  : "text-ink-soft hover:text-ink"
+              }`}
             >
               <span>{item.label}</span>
 
@@ -74,14 +85,14 @@ export default function Header() {
                   />
                 </svg>
               )}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="flex items-center justify-end gap-3">
-          <a
-            href="#pilot"
-            className="hidden items-center gap-2 rounded-pill bg-brand-yellow px-6 py-3 text-nav-link font-black text-ink shadow-[0_8px_22px_rgba(16,16,16,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-yellow-soft sm:inline-flex"
+          <Link
+            to="/#pilot"
+            className="hidden items-center gap-2 rounded-pill bg-brand-yellow px-7 py-3.5 text-nav-link font-black text-ink shadow-[0_8px_22px_rgba(16,16,16,0.12)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-yellow-soft sm:inline-flex"
           >
             Đăng ký pilot
             <svg
@@ -104,14 +115,20 @@ export default function Header() {
                 strokeLinejoin="round"
               />
             </svg>
-          </a>
+          </Link>
 
           <button
             type="button"
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-full border text-ink transition-all duration-200 hover:-translate-y-0.5 lg:hidden ${
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-200 hover:-translate-y-0.5 lg:hidden ${
+              headerTheme === "dark"
+                ? "text-white border-white/15"
+                : "text-ink border-ink/15"
+            } ${
               isScrolled
-                ? "border-ink/15 bg-white/55 shadow-[0_8px_24px_rgba(16,16,16,0.10)]"
-                : "border-ink/15 bg-white/25"
+                ? isDark
+                  ? "bg-white/10 backdrop-blur-xl"
+                  : "bg-black/[0.04] backdrop-blur-xl"
+                : "bg-transparent"
             }`}
             aria-label={isOpen ? "Đóng menu" : "Mở menu"}
             aria-expanded={isOpen}
@@ -141,7 +158,11 @@ export default function Header() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="border-t border-ink/10 bg-surface-cream-strong/88 px-page-x py-4 shadow-[0_18px_45px_rgba(16,16,16,0.12)] backdrop-blur-2xl lg:hidden"
+            className={`border-t px-page-x py-4 backdrop-blur-2xl ${
+              isDark
+                ? "border-white/8 bg-black/88"
+                : "border-black/10 bg-white/88"
+            }`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -152,7 +173,11 @@ export default function Header() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="flex items-center justify-between rounded-2xl border border-ink/10 bg-white/45 px-4 py-3 text-body-sm font-extrabold text-ink transition-colors hover:bg-white"
+                  className={`flex items-center justify-between rounded-2xl px-4 py-3 text-body-sm font-extrabold transition-colors ${
+                    isDark
+                      ? "border border-white/10 bg-white/5 text-white hover:bg-white/10"
+                      : "border border-ink/10 bg-white/45 text-ink hover:bg-white"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   <span>{item.label}</span>
@@ -180,7 +205,11 @@ export default function Header() {
             <div className="mt-4 grid gap-2">
               <a
                 href="#partner"
-                className="rounded-2xl border border-ink/10 bg-white/45 px-4 py-3 text-center text-body-sm font-extrabold text-ink"
+                className={`rounded-2xl px-4 py-3 text-center text-body-sm font-extrabold transition-colors ${
+                  isDark
+                    ? "border border-white/10 bg-white/5 text-white hover:bg-white/10"
+                    : "border border-ink/10 bg-white/45 text-ink hover:bg-white"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 Trở thành đối tác
@@ -188,7 +217,11 @@ export default function Header() {
 
               <a
                 href="#login"
-                className="rounded-2xl border border-ink/10 bg-white/45 px-4 py-3 text-center text-body-sm font-extrabold text-ink"
+                className={`rounded-2xl px-4 py-3 text-center text-body-sm font-extrabold transition-colors ${
+                  isDark
+                    ? "border border-white/10 bg-white/5 text-white hover:bg-white/10"
+                    : "border border-ink/10 bg-white/45 text-ink hover:bg-white"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 Đăng nhập

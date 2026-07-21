@@ -1,32 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-
   theme: {
     extend: {
-      spacing: {
-        // Layout spacing dùng chung
-        "page-x": "clamp(24px, 5vw, 64px)",
-        "section-y": "clamp(72px, 10vw, 120px)",
-        "section-y-sm": "clamp(48px, 7vw, 80px)",
-
-        // Container / component spacing
-        "nav-h": "80px",
-        "hero-y": "clamp(48px, 8vw, 96px)",
-        "card-p": "clamp(20px, 3vw, 32px)",
-
-        // Extra scale
-        18: "72px",
-        22: "88px",
-        26: "104px",
-        30: "120px",
-      },
-
-      maxWidth: {
-        page: "1440px",
-        content: "1280px",
-      },
-
       colors: {
         brand: {
           yellow: "#FFD400",
@@ -49,12 +25,50 @@ export default {
           amber: "#6B5A16",
         },
       },
-
       fontFamily: {
-        sans: ["Be Vietnam Pro", "system-ui", "sans-serif"],
-        display: ["Be Vietnam Pro", "system-ui", "sans-serif"],
+        sans: [
+          '"Be Vietnam Pro"',
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "sans-serif",
+        ],
+        display: ['"Be Vietnam Pro"', "system-ui", "sans-serif"],
       },
-
+      fontSize: {
+        "nav-link": ["clamp(1.05rem,1vw,1.18rem)", { lineHeight: "1.2" }],
+        "body-xs": ["clamp(0.75rem,0.72vw,0.82rem)", { lineHeight: "1.55" }],
+        "body-sm": ["clamp(0.9rem,0.86vw,1rem)", { lineHeight: "1.65" }],
+        body: ["clamp(1rem,1vw,1.125rem)", { lineHeight: "1.75" }],
+        "hero-desc": ["clamp(1.06rem,1.35vw,1.32rem)", { lineHeight: "1.72" }],
+        "title-sub": [
+          "clamp(1.25rem,1.8vw,1.75rem)",
+          { lineHeight: "1.14", letterSpacing: "-0.035em" },
+        ],
+        "title-section": [
+          "clamp(2.2rem,4.4vw,5.25rem)",
+          { lineHeight: "0.98", letterSpacing: "-0.06em" },
+        ],
+        "title-hero": [
+          "clamp(2.8rem,6.2vw,6.9rem)",
+          {
+            lineHeight: "1.02",
+            letterSpacing: "-0.04em",
+          },
+        ],
+      },
+      spacing: {
+        "page-x": "clamp(1rem,4vw,5.5rem)",
+        "nav-h": "clamp(4.25rem,5.2vw,5.25rem)",
+        "hero-y": "clamp(2.25rem,5vh,4.75rem)",
+        "section-y": "clamp(4rem,9vw,8rem)",
+      },
+      borderRadius: {
+        pill: "999px",
+        card: "28px",
+        "card-lg": "36px",
+      },
       boxShadow: {
         sticker: "0 5px 0 rgba(16,16,16,0.9), 0 18px 42px rgba(64,48,0,0.16)",
         "card-soft": "0 18px 55px rgba(16,16,16,0.10)",
@@ -71,6 +85,5 @@ export default {
       },
     },
   },
-
   plugins: [],
 };

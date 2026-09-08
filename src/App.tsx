@@ -1,21 +1,31 @@
-import { Route, Routes } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
-import AboutPage from "./pages/AboutPage";
-import HomePage from "./pages/HomePage";
+import { Suspense } from "react";
+import { Routes } from "react-router-dom";
+import { AuthInitializer } from "./features/auth";
+import LoadingLayout from "./layouts/Loading.layout";
+import {
+  AdminDataRoute,
+  AdminSystemRoute,
+  AuthRoute,
+  CustomerSupportRoute,
+  PublicRoute,
+} from "./routes";
 import ScrollToHash from "./routes/ScrollToHash";
 
 export default function App() {
   return (
     <>
+      <AuthInitializer />
       <ScrollToHash />
 
-      <MainLayout>
+      <Suspense fallback={<LoadingLayout />}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="*" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
+          {PublicRoute()}
+          {AuthRoute()}
+          {AdminSystemRoute()}
+          {AdminDataRoute()}
+          {CustomerSupportRoute()}
         </Routes>
-      </MainLayout>
+      </Suspense>
     </>
   );
 }

@@ -1,5 +1,105 @@
+# ==============================================================
+# Environment variables
+# Chỉ .env.example được push, mọi file .env khác đều bị bỏ qua
+# ==============================================================
+.env
+.env.*
+*.env
+!.env.example
+
+# ==============================================================
+# Secrets & credentials
+# ==============================================================
+# Private keys / certificates
+*.pem
+*.key
+*.crt
+*.cer
+*.der
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.csr
+*.ppk
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+*.gpg
+*.asc
+
+# Credential / secret files
+secrets/
+.secrets/
+secret.*
+secrets.*
+*.secret
+*.secrets
+credentials.*
+*credentials*.json
+service-account*.json
+*-service-account.json
+firebase-adminsdk*.json
+google-services.json
+GoogleService-Info.plist
+.npmrc
+.yarnrc
+.yarnrc.yml
+.netrc
+.htpasswd
+auth.json
+
+# Cloud / deploy CLI configs (có thể chứa token)
+.vercel/
+.netlify/
+.firebase/
+.aws/
+.azure/
+.gcloud/
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# ==============================================================
+# Dependencies
+# ==============================================================
+node_modules/
+.pnpm-store/
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+.pnp.*
+
+# ==============================================================
+# Build output (landing: dist, admin: dist-admin)
+# ==============================================================
+dist/
+dist-admin/
+dist-ssr/
+build/
+out/
+*.local
+
+# ==============================================================
+# Cache & generated files
+# ==============================================================
+.vite/
+.cache/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+.parcel-cache/
+coverage/
+.nyc_output/
+
+# ==============================================================
 # Logs
-logs
+# ==============================================================
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,18 +107,36 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
+# ==============================================================
+# Editor / IDE
+# ==============================================================
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*~
+
+# Claude Code: chỉ bỏ qua cấu hình cá nhân
+.claude/settings.local.json
+
+# ==============================================================
+# OS
+# ==============================================================
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ==============================================================
+# Temp
+# ==============================================================
+tmp/
+temp/
+*.tmp
+*.bak

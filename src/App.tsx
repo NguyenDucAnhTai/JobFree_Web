@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Outlet } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import AboutPage from "./pages/AboutPage";
 import HomePage from "./pages/HomePage";
@@ -9,13 +9,13 @@ export default function App() {
     <>
       <ScrollToHash />
 
-      <MainLayout>
-        <Routes>
+      <Routes>
+        <Route element={<MainLayout><Outlet /></MainLayout>}>
           <Route path="/" element={<HomePage />} />
-          <Route path="*" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-        </Routes>
-      </MainLayout>
+          <Route path="*" element={<HomePage />} />
+        </Route>
+      </Routes>
     </>
   );
 }

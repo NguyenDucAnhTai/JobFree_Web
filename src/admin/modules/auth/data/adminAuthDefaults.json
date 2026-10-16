@@ -1,0 +1,25 @@
+{
+  "defaultCredentials": {
+    "email": "admin@jobfree.vn",
+    "password": "admin123"
+  },
+  "rememberMeDefault": true,
+  "brand": {
+    "name": "JobFree Admin",
+    "badge": "JF",
+    "headline": "Vận hành nền tảng việc làm linh hoạt cho Employer & Worker.",
+    "subheadline": "Quản lý jobs tức thì, xác minh worker, ví & giao dịch, cấu hình giá và phân quyền – tất cả trong một console duy nhất.",
+    "copyright": "© 2026 JobFree Vietnam"
+  },
+  "ui": {
+    "loginTitle": "Đăng nhập Admin",
+    "loginSubtitle": "Khu vực dành cho quản trị viên nội bộ.",
+    "emailLabel": "Email",
+    "passwordLabel": "Mật khẩu",
+    "rememberMeLabel": "Ghi nhớ tôi",
+    "forgotPasswordLabel": "Quên mật khẩu?",
+    "submitButtonLabel": "Đăng nhập",
+    "submittingButtonLabel": "Đang xác thực...",
+    "auditNotice": "Admin access only. Mọi hoạt động đăng nhập đều được ghi vào Audit Log."
+  }
+}

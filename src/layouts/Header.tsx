@@ -4,18 +4,22 @@ import logoDark from "../assets/logo_dark.svg";
 import logoLight from "../assets/logo_light.svg";
 import { Link } from "react-router-dom";
 
+// Admin chạy trên port riêng nên phải dùng URL tuyệt đối thay vì route nội bộ
+const ADMIN_URL = import.meta.env.VITE_ADMIN_URL ?? "http://localhost:5174/admin";
+
 const navLinks = [
   { label: "Giải pháp", href: "#solutions", hasDropdown: true },
   { label: "Cách hoạt động", href: "#how-it-works", hasDropdown: true },
   { label: "Bảng giá", href: "#pricing", hasDropdown: false },
   { label: "Đối tượng", href: "#audience", hasDropdown: false },
   { label: "Về JobFree", to: "/about", hasDropdown: false },
+  { label: "Admin Portal", href: ADMIN_URL, hasDropdown: false },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [headerTheme, setHeaderTheme] = useState<"light" | "dark">("light");
+  const [headerTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,36 +61,44 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center justify-center gap-8 lg:flex xl:gap-10">
-          {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              className={`group inline-flex items-center gap-2 text-nav-link font-black transition-colors duration-200 ${
-                headerTheme === "dark"
-                  ? "text-white/72 hover:text-white"
-                  : "text-ink-soft hover:text-ink"
-              }`}
-            >
-              <span>{item.label}</span>
+          {navLinks.map((item) => {
+            const className = `group inline-flex items-center gap-2 text-nav-link font-black transition-colors duration-200 ${
+              headerTheme === "dark"
+                ? "text-white/72 hover:text-white"
+                : "text-ink-soft hover:text-ink"
+            }`;
+            const content = (
+              <>
+                <span>{item.label}</span>
+                {item.hasDropdown && (
+                  <svg
+                    className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-y-0.5"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 6L8 10L12 6"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+              </>
+            );
 
-              {item.hasDropdown && (
-                <svg
-                  className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-y-0.5"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M4 6L8 10L12 6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              )}
-            </Link>
-          ))}
+            return item.to ? (
+              <Link key={item.label} to={item.to} className={className}>
+                {content}
+              </Link>
+            ) : (
+              <a key={item.label} href={item.href} className={className}>
+                {content}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center justify-end gap-3">
@@ -169,37 +181,54 @@ export default function Header() {
             transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="grid gap-2">
-              {navLinks.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className={`flex items-center justify-between rounded-2xl px-4 py-3 text-body-sm font-extrabold transition-colors ${
-                    isDark
-                      ? "border border-white/10 bg-white/5 text-white hover:bg-white/10"
-                      : "border border-ink/10 bg-white/45 text-ink hover:bg-white"
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span>{item.label}</span>
+              {navLinks.map((item) => {
+                const mobileClass = `flex items-center justify-between rounded-2xl px-4 py-3 text-body-sm font-extrabold transition-colors ${
+                  isDark
+                    ? "border border-white/10 bg-white/5 text-white hover:bg-white/10"
+                    : "border border-ink/10 bg-white/45 text-ink hover:bg-white"
+                }`;
+                const inner = (
+                  <>
+                    <span>{item.label}</span>
+                    {item.hasDropdown && (
+                      <svg
+                        className="h-4 w-4"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M4 6L8 10L12 6"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    )}
+                  </>
+                );
 
-                  {item.hasDropdown && (
-                    <svg
-                      className="h-4 w-4"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M4 6L8 10L12 6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  )}
-                </a>
-              ))}
+                return item.to ? (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    className={mobileClass}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {inner}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className={mobileClass}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {inner}
+                  </a>
+                );
+              })}
             </div>
 
             <div className="mt-4 grid gap-2">

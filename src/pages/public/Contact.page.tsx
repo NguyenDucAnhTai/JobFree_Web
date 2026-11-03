@@ -1,6 +1,6 @@
 import { Building2, Mail, MessageCircle, UserRound } from "lucide-react";
 import { Link } from "react-router-dom";
-import Container from "../../layouts/Container";
+import Container from "../../components/shared/Container";
 import { PublicHero, SectionHeading } from "../../features/public/components/PublicPrimitives";
 import PublicPageMeta from "../../features/public/seo/PublicPageMeta";
 

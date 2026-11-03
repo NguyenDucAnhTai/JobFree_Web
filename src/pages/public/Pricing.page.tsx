@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import Container from "../../layouts/Container";
+import Container from "../../components/shared/Container";
 import PublicPageMeta from "../../features/public/seo/PublicPageMeta";
 
 const costParts = [

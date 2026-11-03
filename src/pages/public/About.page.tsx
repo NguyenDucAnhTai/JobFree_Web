@@ -1,7 +1,7 @@
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import PublicPageMeta from "../features/public/seo/PublicPageMeta";
+import PublicPageMeta from "../../features/public/seo/PublicPageMeta";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },

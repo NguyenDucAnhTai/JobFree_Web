@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Bookmark, BriefcaseBusiness, CalendarClock, Check, Clock3, MapPin, ShieldCheck, WalletCards } from "lucide-react";
-import Container from "../../layouts/Container";
+import Container from "../../components/shared/Container";
 import { FinalCTA, PublicHero, SectionHeading } from "../../features/public/components/PublicPrimitives";
 import PublicPageMeta from "../../features/public/seo/PublicPageMeta";
 

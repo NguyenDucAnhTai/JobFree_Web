@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight, ClipboardCheck, Clock3, MapPin, UserCheck } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import Container from "../../layouts/Container";
+import Container from "../../components/shared/Container";
 import CategoryArtwork from "../../features/public/job-categories/CategoryArtwork";
 import { findJobCategory } from "../../features/public/job-categories/jobCategories.data";
 import PublicPageMeta from "../../features/public/seo/PublicPageMeta";

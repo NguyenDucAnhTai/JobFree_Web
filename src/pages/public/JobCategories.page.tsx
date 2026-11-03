@@ -1,6 +1,6 @@
 import { ArrowDownRight, ArrowRight, Building2, UserRound } from "lucide-react";
 import { Link } from "react-router-dom";
-import Container from "../../layouts/Container";
+import Container from "../../components/shared/Container";
 import CategoryArtwork from "../../features/public/job-categories/CategoryArtwork";
 import { jobCategories } from "../../features/public/job-categories/jobCategories.data";
 import PublicPageMeta from "../../features/public/seo/PublicPageMeta";

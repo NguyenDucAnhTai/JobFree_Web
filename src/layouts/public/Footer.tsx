@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Container from "./Container";
+import Container from "../../components/shared/Container";
 
 const productLinks = [
   ["Cho doanh nghiệp", "/employers"],

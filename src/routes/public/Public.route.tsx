@@ -1,5 +1,5 @@
 import { Outlet, Route } from "react-router-dom";
-import MainLayout from "../../layouts/MainLayout";
+import MainLayout from "../../layouts/public/Public.layout";
 import {
   AboutPage,
   BlogArticlePage,
@@ -17,8 +17,9 @@ import {
 } from "../../pages/public";
 import { ROUTER_URL } from "../router.const";
 
-const PublicRoute = (
-  <>
+export default function PublicRoute() {
+  return (
+    <>
     <Route
       element={
         <MainLayout>
@@ -53,7 +54,6 @@ const PublicRoute = (
       <Route path={ROUTER_URL.PUBLIC.PARTNERS} element={<PartnersPage />} />
       <Route path="*" element={<HomePage />} />
     </Route>
-  </>
-);
-
-export default PublicRoute;
+    </>
+  );
+}

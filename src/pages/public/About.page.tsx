@@ -1,5 +1,7 @@
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
+import PublicPageMeta from "../features/public/seo/PublicPageMeta";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -33,7 +35,7 @@ const principles = [
   {
     number: "04",
     title: "Nhanh nhưng không cẩu thả",
-    desc: "Matching nhanh cần đi cùng xác nhận, kiểm soát rủi ro và hỗ trợ khi phát sinh.",
+    desc: "Matching rõ ràng cần đi cùng xác nhận, kiểm soát rủi ro và hướng dẫn khi phát sinh.",
   },
 ];
 
@@ -53,6 +55,11 @@ const marketCards = [
 export default function AboutPage() {
   return (
     <div className="w-full bg-surface-cream text-ink">
+      <PublicPageMeta
+        title="Về JobFree"
+        description="Tìm hiểu định hướng JobFree trong việc kết nối Employer và Worker bằng thông tin ca ngắn rõ ràng, có thể theo dõi."
+        canonicalPath="/about"
+      />
       <AboutHero />
       <WhySection />
       <PrinciplesSection />
@@ -74,7 +81,7 @@ function AboutHero() {
             custom={1}
             className="mt-6 max-w-[12ch] font-display text-title-hero font-extrabold leading-[1.02] tracking-[-0.04em] text-ink"
           >
-            Chúng tôi xây hệ điều phối việc làm tức thì.
+            Chúng tôi xây hệ điều phối ca ngắn rõ ràng.
           </motion.h1>
 
           <motion.p
@@ -83,8 +90,7 @@ function AboutHero() {
             className="mt-6 max-w-[62ch] text-hero-desc font-medium text-ink-soft"
           >
             JobFree sinh ra để biến việc tìm người làm ngắn hạn từ nhắn tin thủ
-            công, chờ may rủi thành một quy trình rõ ràng, nhanh và có kiểm
-            chứng.
+            công, chờ may rủi thành một quy trình rõ ràng và có thể theo dõi.
           </motion.p>
 
           <motion.div
@@ -92,12 +98,12 @@ function AboutHero() {
             custom={3}
             className="mt-8 flex flex-wrap gap-3"
           >
-            <a
-              href="#pilot"
+            <Link
+              to="/#pilot"
               className="rounded-pill bg-ink px-7 py-4 text-body-sm font-black text-brand-yellow shadow-[0_9px_0_rgba(255,255,255,0.38)] transition-all duration-200 hover:-translate-y-0.5"
             >
               Tham gia pilot →
-            </a>
+            </Link>
 
             <a
               href="/"
@@ -209,7 +215,7 @@ function OrbitCard({
       animate={{ y: [0, -8, 0] }}
       transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
     >
-      <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-brand-amber">
+      <p className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-ink-amber">
         {eyebrow}
       </p>
       <h3 className="mt-2 text-body-sm font-black text-ink">{title}</h3>
@@ -237,7 +243,7 @@ function WhySection() {
         animate={inView ? "visible" : "hidden"}
       >
         <motion.div variants={fadeUp} custom={0}>
-          <p className="mb-4 inline-flex rounded-pill bg-surface-sand px-4 py-2 text-body-xs font-black uppercase tracking-[0.16em] text-brand-amber">
+          <p className="mb-4 inline-flex rounded-pill bg-surface-sand px-4 py-2 text-body-xs font-black uppercase tracking-[0.16em] text-ink-amber">
             Vì sao tồn tại?
           </p>
 
@@ -395,9 +401,9 @@ function AboutCTA() {
   return (
     <section className="relative w-full overflow-hidden bg-brand-yellow px-page-x py-section-y">
       <div className="relative z-10 rounded-[40px] border-2 border-ink bg-white p-7 shadow-[0_18px_0_rgba(16,16,16,0.12)] lg:p-10">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
           <div>
-            <p className="text-body-xs font-black uppercase tracking-[0.16em] text-brand-amber">
+            <p className="text-body-xs font-black uppercase tracking-[0.16em] text-ink-amber">
               Build with us
             </p>
             <h2 className="mt-4 max-w-[16ch] font-display text-title-section font-black text-ink">
@@ -405,12 +411,16 @@ function AboutCTA() {
             </h2>
           </div>
 
-          <a
-            href="#pilot"
-            className="inline-flex rounded-pill bg-ink px-7 py-4 text-body-sm font-black text-brand-yellow transition-all duration-200 hover:-translate-y-0.5"
-          >
-            Đăng ký pilot →
-          </a>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Link
+              to="/#pilot"
+              className="inline-flex min-h-12 items-center rounded-pill bg-ink px-7 py-4 text-body-sm font-black text-brand-yellow transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transform-none motion-reduce:transition-none"
+            >
+              Tìm hiểu pilot →
+            </Link>
+            <Link to="/how-it-works" className="min-h-10 content-center text-body-sm font-bold underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">Cách JobFree hoạt động</Link>
+            <Link to="/partners" className="min-h-10 content-center text-body-sm font-bold underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">Trao đổi hợp tác</Link>
+          </div>
         </div>
       </div>
     </section>

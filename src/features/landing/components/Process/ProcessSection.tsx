@@ -90,6 +90,10 @@ export default function ProcessSection() {
           </div>
         </motion.div>
 
+        <p className="mb-3 text-center text-[0.65rem] font-bold text-ink-muted">
+          Giao diện minh họa · dữ liệu mẫu
+        </p>
+
         {/* Desktop creative board */}
         <motion.div variants={fadeUp} custom={1} className="hidden lg:block">
           <div className="relative min-h-[780px] overflow-hidden rounded-[40px] border-2 border-ink bg-white shadow-[0_24px_70px_rgba(16,16,16,0.09)]">

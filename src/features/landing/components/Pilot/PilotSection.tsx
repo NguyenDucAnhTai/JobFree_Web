@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
+import { useSearchParams } from "react-router-dom";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -27,8 +28,7 @@ const modeContent = {
     eyebrow: "Employer pilot",
     title: "Nhận tư vấn pilot",
     badge: "⚡ Mở pilot theo khu vực",
-    submit: "Gửi thông tin tuyển người →",
-    note: "Đội ngũ JobFree sẽ liên hệ trong vòng 1–2 ngày để xác nhận nhu cầu tuyển worker.",
+    note: "Khi kênh đăng ký trực tuyến hoạt động, JobFree sẽ cập nhật thông tin liên hệ tại đây.",
     fields: [
       {
         label: "Tên doanh nghiệp / cá nhân",
@@ -52,8 +52,7 @@ const modeContent = {
     eyebrow: "Worker pilot",
     title: "Đăng ký nhận việc",
     badge: "💼 Mở danh sách worker sớm",
-    submit: "Gửi thông tin nhận việc →",
-    note: "JobFree sẽ liên hệ khi khu vực của bạn mở pilot và có nhóm việc phù hợp.",
+    note: "Khi kênh đăng ký trực tuyến hoạt động, JobFree sẽ cập nhật thông tin liên hệ tại đây.",
     fields: [
       {
         label: "Họ và tên",
@@ -76,6 +75,9 @@ const modeContent = {
 };
 
 export default function PilotSection() {
+  const [searchParams] = useSearchParams();
+  const requestedMode = searchParams.get("pilot");
+  const initialMode: PilotMode = requestedMode === "worker" ? "worker" : "employer";
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -99,7 +101,7 @@ export default function PilotSection() {
 
           <p className="mt-5 max-w-[58ch] text-body font-medium leading-relaxed text-ink-soft">
             Dành cho shop, kho, sự kiện, đội vận hành hoặc worker muốn thử cách
-            tìm việc ca ngắn nhanh hơn, rõ hơn và có kiểm soát hơn.
+            tìm hiểu công việc ca ngắn với thông tin rõ ràng và có thể theo dõi.
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3 lg:max-w-[720px]">
@@ -108,7 +110,7 @@ export default function PilotSection() {
                 key={item}
                 className="rounded-2xl border border-ink/10 bg-white/42 p-4 backdrop-blur"
               >
-                <p className="text-body-xs font-black uppercase tracking-[0.14em] text-brand-amber">
+                <p className="text-body-xs font-black uppercase tracking-[0.14em] text-ink-amber">
                   0{index + 1}
                 </p>
                 <p className="mt-2 text-body-xs font-extrabold leading-snug text-ink">
@@ -120,15 +122,15 @@ export default function PilotSection() {
         </motion.div>
 
         <motion.div variants={fadeUp} custom={1}>
-          <PilotFormCard />
+          <PilotFormCard key={requestedMode} initialMode={initialMode} />
         </motion.div>
       </motion.div>
     </section>
   );
 }
 
-function PilotFormCard() {
-  const [mode, setMode] = useState<PilotMode>("employer");
+function PilotFormCard({ initialMode }: { initialMode: PilotMode }) {
+  const [mode, setMode] = useState<PilotMode>(initialMode);
   const content = modeContent[mode];
 
   return (
@@ -143,7 +145,7 @@ function PilotFormCard() {
         {content.badge}
       </motion.div>
 
-      <form className="rounded-[34px] border-2 border-ink bg-white p-5 shadow-[0_16px_0_rgba(16,16,16,0.12)] sm:p-7">
+      <form onSubmit={(event) => event.preventDefault()} className="rounded-[34px] border-2 border-ink bg-white p-5 shadow-[0_16px_0_rgba(16,16,16,0.12)] sm:p-7">
         <div className="mb-6 flex items-center justify-between gap-4">
           <motion.div
             key={content.title}
@@ -163,6 +165,10 @@ function PilotFormCard() {
             JF
           </div>
         </div>
+
+        <p className="mb-5 rounded-xl border border-brand-amber/20 bg-brand-yellow-muted/50 p-3 text-body-xs font-semibold leading-relaxed text-ink">
+          Biểu mẫu xem trước: gửi thông tin trực tuyến hiện chưa được kích hoạt. Chưa có dữ liệu nào được gửi hoặc lưu.
+        </p>
 
         <div className="relative mb-6 grid grid-cols-2 gap-2 rounded-2xl bg-surface-sand p-1.5">
           <SegmentButton
@@ -198,10 +204,14 @@ function PilotFormCard() {
 
         <button
           type="button"
-          className="mt-5 w-full rounded-pill bg-ink px-6 py-4 text-body-sm font-black text-brand-yellow transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-black"
+          disabled
+          aria-describedby="pilot-submit-status"
+          className="mt-5 w-full cursor-not-allowed rounded-pill bg-ink/75 px-6 py-4 text-body-sm font-black text-brand-yellow"
         >
-          {content.submit}
+          Gửi trực tuyến chưa khả dụng
         </button>
+
+        <p id="pilot-submit-status" className="sr-only">Biểu mẫu chưa gửi thông tin.</p>
 
         <p className="mt-4 text-center text-[0.72rem] font-medium leading-relaxed text-ink-muted">
           {content.note}

@@ -2,26 +2,16 @@ export const ROUTER_URL = {
   PUBLIC: {
     HOME: "/",
     ABOUT: "/about",
+    EMPLOYERS: "/employers",
+    WORKERS: "/workers",
+    HOW_IT_WORKS: "/how-it-works",
+    CONTACT: "/contact",
+    JOB_CATEGORIES: "/job-categories",
+    JOB_CATEGORY: "/job-categories/:slug",
+    PRICING: "/pricing",
+    FAQ: "/faq",
+    BLOG: "/blog",
+    BLOG_ARTICLE: "/blog/:slug",
+    PARTNERS: "/partners",
   },
-
-  AUTH: {
-    LOGIN: "/login",
-  },
-
-  ADMIN_SYSTEM: {
-    ROOT: "/admin-system",
-    DASHBOARD: "/admin-system/dashboard",
-  },
-
-  ADMIN_DATA: {
-    ROOT: "/admin-data",
-    DASHBOARD: "/admin-data/dashboard",
-  },
-
-  CUSTOMER_SUPPORT: {
-    ROOT: "/cskh",
-    DASHBOARD: "/cskh/dashboard",
-  },
-
-  FORBIDDEN: "/403",
 } as const;

@@ -65,7 +65,7 @@ const services = [
     tone: "from-[#16110C] via-[#3A2314] to-[#FFCD29]",
   },
   {
-    title: "Đối tác vận hành",
+    title: "Điều phối vận hành",
     desc: "Theo dõi check-in/out, lịch sử uy tín và dữ liệu ca làm.",
     tag: "Ops control",
     utility: "QR proof rõ ràng",

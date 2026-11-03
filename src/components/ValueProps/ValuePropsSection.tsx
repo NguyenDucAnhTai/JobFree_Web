@@ -8,7 +8,7 @@ const valueCards = [
   },
   {
     title: "Mức trả đề xuất",
-    desc: "Gợi ý mức thù lao theo loại việc, khu vực và độ gấp để tăng khả năng nhận ca nhanh.",
+    desc: "Trình bày mức thù lao theo loại việc, khu vực và thời gian của ca.",
     icon: "money",
     dark: false,
     className:
@@ -36,15 +36,15 @@ const valueCards = [
     className: "lg:col-span-4 bg-white text-ink border-ink/80 min-h-[176px]",
   },
   {
-    title: "Hỗ trợ 24/7",
-    desc: "Có kênh hỗ trợ khi phát sinh hủy ca, thiếu người, tranh chấp hoặc cần điều phối nhanh.",
+    title: "Hỗ trợ vận hành",
+    desc: "Quy trình ghi nhận thông tin khi phát sinh hủy ca, thiếu người hoặc cần điều phối.",
     icon: "support",
     dark: false,
     className: "lg:col-span-4 bg-white text-ink border-ink/80 min-h-[176px]",
   },
   {
-    title: "Tăng tốc vận hành",
-    desc: "Giảm thời gian gọi điện, nhắn tin thủ công và gom dữ liệu vận hành về một nơi.",
+    title: "Theo dõi vận hành",
+    desc: "Tập trung thông tin và lịch sử vận hành ca tại một nơi.",
     icon: "rocket",
     dark: false,
     className:

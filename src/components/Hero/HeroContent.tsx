@@ -6,11 +6,6 @@ const trustItems = [
   "Thanh toán và đánh giá minh bạch",
 ];
 
-const stats = [
-  { value: "3 phút", label: "để đăng một ca" },
-  { value: "24/7", label: "hỗ trợ vận hành" },
-];
-
 const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
@@ -44,7 +39,7 @@ export default function HeroContent() {
         variants={itemVariants}
         className="mt-6 max-w-[56ch] text-hero-desc font-medium text-ink-soft"
       >
-        JobFree giúp doanh nghiệp đăng việc, ghép worker gần nhất, theo dõi
+        JobFree giúp doanh nghiệp đăng việc, tìm worker phù hợp trong khu vực, theo dõi
         check-in/out và hoàn tất ca trong một luồng vận hành rõ ràng.
       </motion.p>
 
@@ -98,24 +93,6 @@ export default function HeroContent() {
         ))}
       </motion.div>
 
-      <motion.div
-        variants={itemVariants}
-        className="mt-7 flex flex-wrap items-center gap-3"
-      >
-        {stats.map((item) => (
-          <div
-            key={item.label}
-            className="rounded-2xl border border-ink/15 bg-white/42 px-5 py-3 backdrop-blur-sm"
-          >
-            <p className="font-display text-title-sub font-black text-ink">
-              {item.value}
-            </p>
-            <p className="text-body-xs font-bold text-ink-muted">
-              {item.label}
-            </p>
-          </div>
-        ))}
-      </motion.div>
     </motion.div>
   );
 }

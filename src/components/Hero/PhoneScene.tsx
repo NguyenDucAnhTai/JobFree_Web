@@ -21,6 +21,7 @@ export default function PhoneScene() {
       animate={{ opacity: 1, x: 0, scale: 1 }}
       transition={{ duration: 0.72, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
     >
+      <span className="absolute left-1/2 top-0 z-40 -translate-x-1/2 rounded-full border border-ink/15 bg-white/95 px-3 py-1 text-[0.65rem] font-bold text-ink-muted shadow-sm">Giao diện minh họa · dữ liệu mẫu</span>
       {/* Shadow dưới cụm phone */}
       <div className="absolute bottom-[8%] left-1/2 h-[120px] w-[72%] -translate-x-1/2 rounded-full bg-black/20 blur-3xl" />
 
@@ -86,7 +87,7 @@ export default function PhoneScene() {
               12 worker gần bạn
             </p>
             <p className="text-[0.62rem] font-bold text-ink-muted">
-              Sẵn sàng nhận ca trong 15 phút
+              Trạng thái sẵn sàng nhận ca
             </p>
           </div>
         </div>
@@ -192,7 +193,7 @@ function WorkerScreen() {
         <p className="text-[0.68rem] font-black text-ink-soft">Đang online</p>
 
         <h4 className="mt-2 text-[1.4rem] font-black leading-[1.02] tracking-[-0.06em]">
-          Sẵn sàng nhận ca trong 2km
+            Worker trong khu vực
         </h4>
 
         <div className="mt-4 h-2.5 overflow-hidden rounded-pill bg-ink/16">
@@ -306,29 +307,15 @@ function EmployerScreen() {
         </div>
       </motion.div>
 
-      <motion.button
-        className="relative mt-4 overflow-hidden rounded-pill bg-ink px-4 py-3 text-[0.78rem] font-black text-brand-yellow"
-        animate={{ scale: [1, 1.025, 1] }}
-        transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <motion.span
-          className="absolute inset-y-0 -left-1/2 w-1/2 bg-gradient-to-r from-transparent via-white/28 to-transparent"
-          animate={{ x: ["0%", "330%"] }}
-          transition={{
-            duration: 2.8,
-            repeat: Infinity,
-            repeatDelay: 1.2,
-            ease: "easeInOut",
-          }}
-        />
-        <span className="relative z-10">Tìm worker phù hợp</span>
-      </motion.button>
+      <div aria-hidden="true" className="mt-4 rounded-xl border border-ink/10 bg-surface-sand px-4 py-3 text-center text-[0.78rem] font-bold text-ink-muted">
+        Tìm worker phù hợp
+      </div>
 
       <div className="mt-5 flex items-center justify-between">
         <p className="text-[0.72rem] font-black text-ink-muted">
           Ứng viên gần nhất
         </p>
-        <p className="text-[0.66rem] font-black text-brand-amber">Xem tất cả</p>
+        <p className="text-[0.66rem] font-black text-ink-muted">DANH SÁCH MẪU</p>
       </div>
 
       <div className="mt-3 space-y-2.5">

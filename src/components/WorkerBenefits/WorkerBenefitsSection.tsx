@@ -23,7 +23,7 @@ const benefitCards = [
   {
     icon: "◎",
     title: "Job gần bạn",
-    desc: "Ưu tiên việc gần khu vực để giảm thời gian di chuyển.",
+    desc: "Hiển thị việc theo khu vực để bạn cân nhắc thời gian di chuyển.",
   },
   {
     icon: "◔",
@@ -32,8 +32,8 @@ const benefitCards = [
   },
   {
     icon: "◈",
-    title: "Bảo hiểm 24/7",
-    desc: "An tâm hơn với các lớp xác minh và hỗ trợ trong ca làm.",
+    title: "Thông tin ca rõ ràng",
+    desc: "Xem thời gian, địa điểm, mức trả và yêu cầu trước khi cân nhắc nhận ca.",
   },
 ];
 
@@ -69,8 +69,8 @@ export default function WorkerBenefitsSection() {
           </h2>
 
           <p className="mt-5 max-w-[58ch] text-body font-medium leading-relaxed text-white/68">
-            JobFree giúp worker chọn việc phù hợp nhanh hơn — rõ mức trả, rõ
-            thời gian, rõ địa điểm và chủ động hơn trong từng ca làm.
+            JobFree giúp worker cân nhắc việc phù hợp dựa trên mức trả, thời
+            gian, địa điểm và trạng thái của từng ca.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -114,13 +114,13 @@ function WorkerVisual() {
 
           <div>
             <p className="text-[0.82rem] font-black">Minh Tuấn</p>
-            <p className="text-[0.7rem] font-bold text-ink/65">★ 4.9 / 5</p>
+            <p className="text-[0.7rem] font-bold text-ink/65">GIAO DIỆN MINH HỌA</p>
           </div>
         </div>
 
         <div className="mt-5 rounded-[24px] border-2 border-ink bg-white p-4 shadow-[0_10px_0_rgba(16,16,16,0.10)]">
           <p className="text-[0.72rem] font-black text-ink-muted">
-            Tiệc Buffet - Lotte Hotel
+            Ca phục vụ tiệc
           </p>
 
           <p className="mt-1 text-[0.66rem] font-semibold text-ink-muted">
@@ -138,9 +138,9 @@ function WorkerVisual() {
               </p>
             </div>
 
-            <button className="rounded-pill bg-ink px-4 py-2 text-[0.68rem] font-black text-brand-yellow">
+            <div aria-hidden="true" className="rounded-pill bg-ink px-4 py-2 text-[0.68rem] font-black text-brand-yellow">
               Xác nhận
-            </button>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -192,7 +192,7 @@ function WorkerVisual() {
           </div>
 
           <div>
-            <p className="text-[0.62rem] font-black uppercase tracking-[0.14em] text-brand-amber">
+            <p className="text-[0.62rem] font-black uppercase tracking-[0.14em] text-ink-amber">
               Job gần bạn
             </p>
             <p className="mt-0.5 whitespace-nowrap text-[0.86rem] font-black text-ink">
@@ -209,7 +209,7 @@ function WorkerVisual() {
         transition={{ delay: 0.25, duration: 0.45 }}
         className="absolute bottom-3 right-8 z-30 rounded-2xl border-2 border-ink bg-[#FF9C1A] px-4 py-3 text-body-xs font-black text-ink shadow-[0_14px_34px_rgba(0,0,0,0.24)]"
       >
-        ⚡ NHẬN TIỀN NGAY
+        THEO DÕI THANH TOÁN
       </motion.div>
     </div>
   );

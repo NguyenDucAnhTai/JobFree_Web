@@ -36,7 +36,7 @@ const newFlow = [
   },
   {
     label: "Tự khớp",
-    text: "Worker gần khu vực được đề xuất nhanh.",
+    text: "Worker phù hợp khu vực được đưa vào danh sách để Employer cân nhắc.",
   },
   {
     label: "Theo dõi",
@@ -45,9 +45,9 @@ const newFlow = [
 ];
 
 const outcomes = [
-  "Biết rủi ro thiếu người sớm hơn",
-  "Giảm phụ thuộc vào nhắn tin thủ công",
-  "Có dữ liệu để vận hành ca sau tốt hơn",
+  "Theo dõi trạng thái xác nhận của ca",
+  "Tập trung cập nhật vận hành ca trong một luồng",
+  "Lưu lịch sử để tham khảo cho ca sau",
 ];
 
 export default function ProblemSection() {
@@ -178,7 +178,7 @@ function OutcomeCard({ index, text }: { index: number; text: string }) {
       <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-brand-yellow/18 blur-2xl transition-opacity group-hover:opacity-100" />
 
       <div className="relative z-10 flex items-start gap-4">
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-surface-sand text-body-sm font-black text-brand-amber">
+        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-surface-sand text-body-sm font-black text-ink-amber">
           0{index + 1}
         </span>
 

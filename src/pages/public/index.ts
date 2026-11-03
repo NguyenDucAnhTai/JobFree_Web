@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-export { default as AboutPage } from "../AboutPage";
+export { default as AboutPage } from "./About.page";
 export { default as PartnersPage } from "./Partners.page";
 export const BlogPage = lazy(() => import("./Blog.page"));
 export const BlogArticlePage = lazy(() => import("./BlogArticle.page"));

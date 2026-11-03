@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import Container from "../../layouts/Container";
+import Container from "../../components/shared/Container";
 import { findBlogArticle, type BlogTopic } from "../../features/public/blog/blog.data";
 import PublicPageMeta from "../../features/public/seo/PublicPageMeta";
 

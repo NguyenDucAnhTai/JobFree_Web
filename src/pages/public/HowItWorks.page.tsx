@@ -1,6 +1,6 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 import { ArrowRight, Check, ClipboardList, CreditCard, QrCode, Search, Star, UserCheck } from "lucide-react";
-import Container from "../../layouts/Container";
+import Container from "../../components/shared/Container";
 import { FinalCTA, PublicHero, SectionHeading } from "../../features/public/components/PublicPrimitives";
 import PublicPageMeta from "../../features/public/seo/PublicPageMeta";
 

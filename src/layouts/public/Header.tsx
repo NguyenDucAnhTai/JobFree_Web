@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
-import logoDark from "../assets/logo_dark.svg";
+import logoDark from "../../assets/logo_dark.svg";
 
 const itemClass =
   "rounded-lg px-3 py-2 text-body-sm font-bold text-ink-soft transition-colors hover:bg-surface-cream hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";

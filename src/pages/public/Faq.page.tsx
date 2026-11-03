@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
-import Container from "../../layouts/Container";
+import Container from "../../components/shared/Container";
 import { faqGroups } from "./faq.data";
 import PublicPageMeta from "../../features/public/seo/PublicPageMeta";
 

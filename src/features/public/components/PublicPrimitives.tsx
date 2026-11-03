@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import Container from "../../../layouts/Container";
+import Container from "../../../components/shared/Container";
 
 export function PublicHero({
   eyebrow,

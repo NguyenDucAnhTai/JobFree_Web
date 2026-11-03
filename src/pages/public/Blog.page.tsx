@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import Container from "../../layouts/Container";
+import Container from "../../components/shared/Container";
 import featuredShiftImage from "../../assets/blog/shift-brief-editorial.jpg";
 import { blogArticles, blogTopics } from "../../features/public/blog/blog.data";
 import PublicPageMeta from "../../features/public/seo/PublicPageMeta";

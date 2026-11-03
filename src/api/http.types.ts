@@ -1,0 +1,14 @@
+export interface ApiSuccessResponse<T> {
+  data: T;
+  message?: string;
+}
+
+export interface ApiErrorDetail {
+  field?: string;
+  message: string;
+}
+
+export interface ApiErrorResponse {
+  message?: string;
+  errors?: ApiErrorDetail[];
+}
